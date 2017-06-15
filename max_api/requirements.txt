@@ -1,0 +1,5 @@
+argparse
+flask
+spotipy
+pickledb
+gevent

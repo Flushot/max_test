@@ -1,0 +1,11 @@
+*.iml
+.idea/
+*.log
+*.pyo
+*.pyc
+*.egg-info/
+node_modules/
+*.DS_Store
+#*#
+.cache-*
+/max_api/run.cmd
