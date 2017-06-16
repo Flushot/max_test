@@ -75,8 +75,8 @@ def find_similar_artists(artist_id):
             artists = filter(lambda artist: artist['id'] != artist_id,
                              map(utils.transform_artist, results['artists']['items']))
             cache.put_similar(genres, map(lambda artist: artist['id'], artists))
-            for artist in artists:
-                cache.put_artist(artist)
+            for similar_artist in artists:
+                cache.put_artist(similar_artist)
 
     log.debug('Found {} artists similar to {} (id: {})'.format(len(artists), artist['name'], artist_id))
 
