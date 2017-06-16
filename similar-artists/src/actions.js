@@ -23,7 +23,7 @@ export function searchArtist(term) {
 
         fetch(apiRoot + '/artists/?term=' + encodeURIComponent(term))
             .then(response => {
-                if (response.status < 200 || response.status > 299) {
+                if (!isResponseOK(response)) {
                     response.text()
                         .then(result => {
                             dispatch({
@@ -65,7 +65,7 @@ export function selectArtist(artistId) {
 
         fetch(apiRoot + '/artists/' + encodeURIComponent(artistId) + '/similar/')
             .then(response => {
-                if (response.status < 200 || response.status > 299) {
+                if (!isResponseOK(response)) {
                     response.text()
                         .then(result => {
                             dispatch({
@@ -90,4 +90,9 @@ export function selectArtist(artistId) {
                 }
             })
     };
+}
+
+
+function isResponseOK(response) {
+    return response.status > 199 && response.status < 300;
 }

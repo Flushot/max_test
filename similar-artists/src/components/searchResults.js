@@ -22,7 +22,9 @@ export default class SearchResults extends Component {
                         </div>
                     </div>
                 ) : (
-                    <div>No results found</div>
+                    !this.props.isBusy ? (
+                        <div>No results found</div>
+                    ) : ''
                 )}
             </div>
         );
