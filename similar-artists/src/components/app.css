@@ -8,10 +8,15 @@
 
 .app-header {
     text-align: center;
-    background-color: #565;
-    height: 150px;
+    background-color: #436088;
+    height: 170px;
     padding: 20px;
     color: white;
+}
+
+.search-input .error {
+    color: #ffba18;
+    font-size: .9em;
 }
 
 @keyframes app-logo-spin {
@@ -21,4 +26,65 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+.artist-details {
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.artist-details.busy {
+    opacity: 0.5;
+}
+
+.artist-details img.artist-image {
+    width: 90%;
+}
+
+.details-table > tbody > tr > th {
+    text-align: left;
+    vertical-align: top;
+}
+
+.artist-tile {
+    padding: 6px;
+    margin: 3px;
+    width: 92px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.artist-tile.selected {
+    background-color: skyblue;
+}
+
+.artist-tile > img.artist-image {
+    min-height: 80px;
+    width: 80px;
+}
+
+.artist-tile > .artist-name {
+    margin-top: 3px;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    flex: 1 auto;
+}
+
+.search-panel {
+    flex-shrink: 4;
+}
+
+/*
+.search-results {
+    display: flex;
+    align-content: flex-start;
+}
+*/
+
+.selection-panel {
+    width: 70vw;
 }

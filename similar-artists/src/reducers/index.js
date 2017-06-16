@@ -3,12 +3,14 @@ import * as Actions from '../actions';
 const initialState = {
     search: {
         busy: false,
+        error: null,
         term: null,
         results: []
     },
     selection: {
         artist: null,
         busy: false,
+        error: null,
         similar: []
     }
 };
@@ -21,6 +23,7 @@ export default function reducer(state = initialState, action) {
                 search: {
                     busy: true,
                     term: action.term,
+                    error: null,
                     results: []
                 }
             });
@@ -29,17 +32,18 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {
                 search: Object.assign({}, state.search, {
                     busy: false,
-                    results: action.artists
+                    error: action.error,
+                    results: (action.error ? [] : action.artists)
                 })
             });
 
         case Actions.SELECT_ARTIST:
             return Object.assign({}, state, {
-                selection: {
+                selection: Object.assign({}, state.selection, {
                     artistId: action.artistId,
                     busy: true,
-                    similar: []
-                }
+                    error: null
+                })
             });
 
         case Actions.SELECT_ARTIST_COMPLETE:
@@ -48,10 +52,11 @@ export default function reducer(state = initialState, action) {
                     term: action.artist.name
                 }),
                 selection: {
-                    artistId: action.artist.id,
-                    artist: action.artist,
+                    artistId: action.artistId,
                     busy: false,
-                    similar: action.similar
+                    error: action.error,
+                    artist: (action.error ? null : action.artist),
+                    similar: (action.error ? [] : action.similar)
                 }
             });
 
