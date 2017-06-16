@@ -36,7 +36,9 @@ def find_artists():
         artists = map(partial(utils.get_artist, spotify), artist_ids)
     else:
         # Cache miss
-        results = spotify.search(q='artist:"{}"'.format(term), type='artist')
+        results = spotify.search(q='artist:"{}"'.format(term),
+                                 type='artist',
+                                 limit=50)
         artists = map(utils.transform_artist, results['artists']['items'])
 
         cache.put_artist_search(term, map(lambda artist: artist['id'], artists))
@@ -71,7 +73,9 @@ def find_similar_artists(artist_id):
         else:
             # Cache miss
             genre_expr = ' '.join(['genre:"{}"'.format(genre) for genre in genres])
-            results = spotify.search(q=genre_expr, type='artist')
+            results = spotify.search(q=genre_expr,
+                                     type='artist',
+                                     limit=50)
             artists = filter(lambda artist: artist['id'] != artist_id,
                              map(utils.transform_artist, results['artists']['items']))
             cache.put_similar(genres, map(lambda artist: artist['id'], artists))
