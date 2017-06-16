@@ -1,4 +1,4 @@
-# MAX Coding Test
+# Artist Search
 
 ## Getting Started
 
