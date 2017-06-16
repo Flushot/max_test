@@ -83,4 +83,4 @@ def _make_genre_key(genres):
     :param genres: genre name list.
     :return: genre key string.
     """
-    return hashlib.md5('|'.join(sorted(set(genres))))
+    return hashlib.md5('|'.join(sorted(set(genres)))).hexdigest()
