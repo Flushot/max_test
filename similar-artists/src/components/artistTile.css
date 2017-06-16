@@ -1,0 +1,24 @@
+.artist-tile {
+    padding: 6px;
+    margin: 3px;
+    width: 80px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.artist-tile.selected {
+    background-color: skyblue;
+}
+
+.artist-tile > img.artist-image {
+    min-height: 80px;
+    width: 80px;
+}
+
+.artist-tile > .artist-name {
+    margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}

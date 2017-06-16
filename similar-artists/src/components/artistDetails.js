@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ArtistTile from './artistTile';
 import anonymous from '../anonymous.png';
+import './artistDetails.css';
 
 
 export default class ArtistDetails extends Component {
@@ -22,13 +23,17 @@ export default class ArtistDetails extends Component {
                     <tbody>
                         <tr>
                             <th>Popularity:</th>
-                            <td>{artist.popularity}</td>
+                            <td>
+                                <div className="progressbar" title={artist.popularity}>
+                                    <div className="progressbar-inner" style={{width: artist.popularity + '%'}}/>
+                                </div>
+                            </td>
                         </tr>
                         {artist.genres.length > 0 ? (
                             <tr>
                                 <th>Genres:</th>
                                 <td>
-                                    <ul>
+                                    <ul className="genre-list">
                                         {artist.genres.map(genre => <li key={genre}>{genre}</li>)}
                                     </ul>
                                 </td>

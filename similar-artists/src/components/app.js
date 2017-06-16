@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import logo from '../logo.png';
-import './app.css';
 import SearchInput from './searchInput';
 import SearchResults from './searchResults';
 import ArtistDetails from './artistDetails';
 import * as Actions from '../actions';
+import logo from '../logo.png';
+import './app.css';
 
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
             <div className="app">
                 <div className="app-header">
                     <img src={logo} className="app-logo" alt="logo"/>
-                    <h2>Similar Artists</h2>
+                    <h2>Artist Search</h2>
                     <SearchInput term={search.term}
                                  isBusy={search.busy}
                                  error={search.error}
@@ -26,13 +26,10 @@ class App extends Component {
                 <div className="container">
                     <div className="search-panel">
                         {search.term ? (
-                            search.busy ? (
-                                <span>Searching...</span>
-                            ) : (
-                                <SearchResults results={search.results}
-                                               selectedArtistId={selection.artistId}
-                                               onArtistClick={this.onArtistClick.bind(this)}/>
-                            )
+                            <SearchResults results={search.results}
+                                           isBusy={search.busy}
+                                           selectedArtistId={selection.artistId}
+                                           onArtistClick={this.onArtistClick.bind(this)}/>
                         ) : ''}
                     </div>
 

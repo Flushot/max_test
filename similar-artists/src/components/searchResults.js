@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ArtistTile from './artistTile';
+import './searchResults.css';
 
 
 export default class SearchResults extends Component {
@@ -9,10 +10,10 @@ export default class SearchResults extends Component {
         const { results, selectedArtistId } = this.props;
 
         return (
-            <div className="search-results">
+            <div className={classNames('search-results', { busy: this.props.isBusy })}>
                 {results.length > 0 ? (
                     <div>
-                        <div>Showing {results.length} results</div>
+                        <div className="search-result-count">Showing {results.length} results</div>
                         <div className="artist-tile-grid">
                             {results.map(artist => <ArtistTile key={artist.id}
                                                                artist={artist}
@@ -31,10 +32,12 @@ export default class SearchResults extends Component {
 
 SearchResults.propTypes = {
     results: PropTypes.array.isRequired,
+    isBusy: PropTypes.bool,
     selectedArtistId: PropTypes.string,
     onArtistClick: PropTypes.func.isRequired
 };
 
 SearchResults.defaultProps = {
+    isBusy: false,
     selectedArtistId: null
 };

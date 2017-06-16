@@ -20,12 +20,11 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case Actions.SEARCH_ARTIST:
             return Object.assign({}, state, {
-                search: {
+                search: Object.assign({}, state.search, {
                     busy: true,
                     term: action.term,
-                    error: null,
-                    results: []
-                }
+                    error: null
+                })
             });
 
         case Actions.SEARCH_ARTIST_COMPLETE:

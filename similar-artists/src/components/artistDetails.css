@@ -1,0 +1,33 @@
+.artist-details {
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.artist-details.busy {
+    opacity: 0.5;
+}
+
+.artist-details > img.artist-image {
+    width: 60%;
+}
+
+.artist-details .details-table > tbody > tr > th {
+    text-align: left;
+    vertical-align: top;
+}
+
+.artist-details ul.genre-list {
+    margin: 0;
+    padding: 0;
+}
+
+.artist-details .progressbar {
+    width: 200px;
+    background-color: #eee;
+}
+
+.artist-details .progressbar > .progressbar-inner {
+    height: 20px;
+    background-color: green;
+}

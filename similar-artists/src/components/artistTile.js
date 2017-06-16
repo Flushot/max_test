@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import anonymous from '../anonymous.png';
+import './artistTile.css';
 
 
 export default class ArtistTile extends Component {
@@ -15,7 +16,7 @@ export default class ArtistTile extends Component {
                      alt={artist.name}
                      title={artist.name}
                      className="artist-image"/>
-                <div className="artist-name">{artist.name}</div>
+                <div className="artist-name" title={artist.name}>{artist.name}</div>
             </div>
         );
     }

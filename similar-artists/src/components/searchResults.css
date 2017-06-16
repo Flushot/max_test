@@ -1,0 +1,17 @@
+.search-results {
+    margin-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.search-results.busy {
+    opacity: 0.5;
+}
+
+.search-results > .search-result-count {
+    font-size: 0.9em;
+}
